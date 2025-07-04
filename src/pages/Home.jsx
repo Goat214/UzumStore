@@ -23,7 +23,7 @@ function Home() {
         {product?.products?.map((p) => {
          
           return <Link key={p.id} to={`/singleProduct/${p.id}`}>
-          <Product  product={p} />;
+          <Product  product={p} isPending={isPending} />;
           </Link>
         })}
       </div>

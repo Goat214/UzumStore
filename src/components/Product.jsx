@@ -2,12 +2,18 @@ import { useState } from "react";
 import { TbShoppingBagPlus } from "react-icons/tb"; // agar hali import qilinmagan bo‘lsa
 import formatNumber from "../utils/FormatNumber";
 
-function Product({product}) {
-    const [liked, setLiked] = useState(false);
-const [count, setCount] = useState(0);
-
+function Product({ product, isPending }) {
+  const [liked, setLiked] = useState(false);
+  const [count, setCount] = useState(0);
+  if (isPending || !product) {
+    return (
+      <div className="h-screen w-full grid place-items-center bg-black/40">
+        <span className="loading w-[70px] text-white loading-dots loading-xl"></span>
+      </div>
+    );
+  }
   return (
-<li
+    <li
       key={product.id}
       className=" group rounded-2xl overflow-hidden max-w-full w-full sm:w-[320px] md:w-[360px] mx-auto bg-[#444444] flex flex-col shadow-lg hover:shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:scale-[1.02] transition-all duration-300"
     >
@@ -55,8 +61,9 @@ const [count, setCount] = useState(0);
           <p className="ml-auto">{product.rating} ⭐</p>
         </div>
 
-        <p className="text-gray-200 mb-5 mt-2 line-clamp-2">{product.description}</p>
-
+        <p className="text-gray-200 mb-5 mt-2 line-clamp-2">
+          {product.description}
+        </p>
 
         <div className="flex items-center justify-between mb-3.5">
           <p className="text-gray-300">
@@ -64,7 +71,9 @@ const [count, setCount] = useState(0);
             <span className="line-through text-red-500 mr-2">
               {formatNumber(product.price)}
             </span>
-            <span>{formatNumber(product.price, product.discountPercentage)}</span>
+            <span>
+              {formatNumber(product.price, product.discountPercentage)}
+            </span>
           </p>
 
           {count === 0 && (
@@ -100,7 +109,7 @@ const [count, setCount] = useState(0);
         </div>
       </div>
     </li>
-  )
+  );
 }
 
-export default Product
+export default Product;

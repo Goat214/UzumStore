@@ -11,8 +11,13 @@ function SingleProduct() {
   const [count, setCount] = useState(0);
 
   if (isPending || !product) {
-    return <span className="loading loading-dots loading-xl"></span>;
+    return (
+      <div className="h-screen w-full grid place-items-center bg-black/40">
+        <span className="loading w-[70px] text-white loading-dots loading-xl"></span>
+      </div>
+    );
   }
+  
 
   return (
    <div className="bg-[#3e3e3e]">

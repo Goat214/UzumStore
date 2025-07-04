@@ -1,8 +1,7 @@
-// useFetch.js
 import { useEffect, useState } from "react";
 
 export function useFetch(url) {
-  const [data, setData] = useState(null); // boshlanishda null
+  const [data, setData] = useState(null); 
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {

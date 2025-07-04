@@ -7,7 +7,7 @@ function MainLayout() {
   return (
    <>
    <Header />
-   <main className='main'>
+   <main className='main flex-grow'>
     <Outlet/>
    </main>
    <Footer/>
